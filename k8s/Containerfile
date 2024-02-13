@@ -6,7 +6,6 @@ RUN corepack enable
 
 ## Copy the files
 WORKDIR /frontend
-COPY vendor ./vendor
 COPY package*.json ./
 COPY pnpm-lock.yaml ./
 COPY public ./public
