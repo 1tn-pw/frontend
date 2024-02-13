@@ -13,7 +13,6 @@ COPY public ./public
 COPY src ./src
 COPY public ./public
 COPY tsconfig.json ./
-COPY .env.production ./.env
 
 # Install dependencies
 FROM base AS dependencies
