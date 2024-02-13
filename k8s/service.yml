@@ -1,0 +1,88 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: frontend
+  namespace: 1tn-pw
+  labels:
+    name: frontend
+    app: frontend
+spec:
+  replicas: 2
+  strategy:
+    rollingUpdate:
+      maxUnavailable: 1
+      maxSurge: 3
+  selector:
+    matchLabels:
+      name: frontend
+  template:
+    metadata:
+      labels:
+        name: frontend
+        app: frontend
+    spec:
+      imagePullSecrets:
+        - name: docker-registry-secret
+      containers:
+        - name: frontend
+          image: containers.chewed-k8s.net/1tn-pw/frontend:latest
+          ports:
+            - containerPort: 80
+              protocol: TCP
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: frontend
+  namespace: 1tn-pw
+  labels:
+    name: frontend
+    app: frontend
+spec:
+  ports:
+    - port: 80
+      protocol: TCP
+      targetPort: 80
+  selector:
+    app: frontend
+
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: frontend
+  namespace: 1tn-pw
+  annotations:
+    cert-manager.io/cluster-issuer: live-issuer
+    nginx.ingress.kubernetes.io/rewrite-target: /
+  labels:
+    app: frontend
+spec:
+  ingressClassName: nginx
+  tls:
+    - hosts:
+        - 1tn.pw
+        - www.1tn.pw
+      secretName: frontend-tls
+  rules:
+    - host: 1tn.pw
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: frontend
+                port:
+                  number: 80
+    - host: www.1tn.pw
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: frontend
+                port:
+                  number: 80
