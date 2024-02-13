@@ -3,6 +3,18 @@ import './App.css';
 import {Button, Flex, Space, Input, Layout, Spin, Result} from "antd";
 import {Header} from "antd/es/layout/layout";
 
+async function redirect(shortURL: string) {
+  let apiURL = "https://api.1tn.pw/v1";
+  if (process.env.NODE_ENV === "development") {
+    apiURL = "http://localhost:8081";
+  }
+
+  const res = await fetch(`${apiURL}/${shortURL}`, {
+    method: "GET",
+  });
+  return res.json();
+}
+
 function App() {
   const [spinning, setSpinning] = React.useState(false);
   const [shrinkSuccess, setShrinkSuccess] = React.useState(false);
@@ -11,6 +23,19 @@ function App() {
   const [showInput, setShowInput] = React.useState(true);
   const [shrinkResult, setShrinkResult] = React.useState("");
   const [invalidURL, setInvalidURL] = React.useState(false);
+
+  const currentURL = window.location.href;
+  if (currentURL.includes("/r/")) {
+    const shortURL = currentURL.split("/r/")[1];
+    redirect(shortURL).then((data) => {
+      window.location.href = data.long;
+    }).catch((err) => {
+      setInvalidURL(true);
+      setShrinkError(true);
+      setShrinkErrorReason("Invalid URL");
+      setShowInput(false);
+    });
+  }
 
   const validateURL = (url: string): boolean => {
     if (url === "") {
@@ -44,7 +69,9 @@ function App() {
     setShowInput(false);
     let url = (document.getElementById("shrinkInput") as HTMLInputElement).value;
     let apiURL = "https://api.1tn.pw/v1/create";
-    apiURL = "http://localhost:8081/create";
+    if (process.env.NODE_ENV === "development") {
+      apiURL = "http://localhost:8081/create";
+    }
     if (!validateURL(url)) {
       return;
     }
@@ -65,7 +92,7 @@ function App() {
     const data = await res.json();
     if (res.ok) {
       setShrinkSuccess(true);
-      setShrinkResult(`https://1tn.pw/${data.short}`);
+      setShrinkResult(`https://1tn.pw/r/${data.short}`);
       setSpinning(false);
     } else {
       setShrinkError(true);
