@@ -1,0 +1,38 @@
+# Base
+FROM containers.chewed-k8s.net/docker_hub_cache/library/node:20-alpine AS base
+ENV PNPM_HOME="/pnpm"
+ENV PATH="$PNPM_HOME:$PATH"
+RUN corepack enable
+
+## Copy the files
+WORKDIR /frontend
+COPY vendor ./vendor
+COPY package*.json ./
+COPY pnpm-lock.yaml ./
+COPY public ./public
+COPY src ./src
+COPY public ./public
+COPY tsconfig.json ./
+COPY .env.production ./.env
+
+# Install dependencies
+FROM base AS dependencies
+RUN --mount=type=cache,id=pnpm,target=/pnpm/store pnpm install --frozen-lockfile --production
+
+# Build
+FROM base AS build
+RUN --mount=type=cache,id=pnpm,target=/pnpm/store pnpm install --frozen-lockfile
+RUN pnpm build
+
+# Runner
+FROM containers.chewed-k8s.net/docker_hub_cache/library/nginx:1.25-alpine AS runner
+COPY --from=dependencies /frontend/node_modules /frontend/node_modules
+COPY --from=build /frontend/build /usr/share/nginx/html
+COPY ./k8s/nginx.conf /etc/nginx/conf.d/default.conf
+
+RUN apk update
+RUN apk upgrade
+
+EXPOSE 80
+
+CMD ["nginx", "-g", "daemon off;"]
