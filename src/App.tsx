@@ -28,7 +28,11 @@ function App() {
   if (currentURL.includes("/r/")) {
     const shortURL = currentURL.split("/r/")[1];
     redirect(shortURL).then((data) => {
-      window.location.href = data.long;
+      console.info("data", data)
+      document.title = data.title;
+      document.getElementsByName("description")[0].setAttribute("content", data.description);
+      document.getElementsByName("favicon")[0].setAttribute("href", data.long + data.favicon);
+      //window.location.href = data.long;
     }).catch((err) => {
       setInvalidURL(true);
       setShrinkError(true);
