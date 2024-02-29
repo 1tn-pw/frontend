@@ -15,6 +15,15 @@ async function redirect(shortURL: string) {
   return res.json();
 }
 
+interface shortDoc {
+  short?: string;
+  long?: string;
+  title?: string;
+  description?: string;
+  favicon?: string;
+}
+
+
 function App() {
   const [spinning, setSpinning] = React.useState(false);
   const [shrinkSuccess, setShrinkSuccess] = React.useState(false);
@@ -27,13 +36,38 @@ function App() {
   const currentURL = window.location.href;
   if (currentURL.includes("/r/")) {
     const shortURL = currentURL.split("/r/")[1];
-    redirect(shortURL).then((data) => {
-      //console.info("data", data)
-      document.title = data.title;
-      document.getElementsByName("description")[0].setAttribute("content", data.description);
-      document.getElementsByName("favicon")[0].setAttribute("href", data.long + data.favicon);
-      window.location.href = data.long;
+    redirect(shortURL).then((data: shortDoc) => {
+      if (data.title && data.title !== "") {
+        document.title = data.title;
+      }
+
+      const metaTags = document.getElementsByName("meta") as NodeListOf<HTMLMetaElement>
+      metaTags.forEach((metaTag: HTMLMetaElement) => {
+        if (metaTag.getAttribute("name") === "description") {
+          if (data.description && data.description !== "") {
+            metaTag.setAttribute("content", data.description);
+          }
+        }
+      });
+
+      const linkTags = document.getElementsByName("link") as NodeListOf<HTMLLinkElement>
+      linkTags.forEach((linkTag: HTMLLinkElement) => {
+        if (linkTag.getAttribute("rel") === "icon") {
+          if (data.favicon && data.favicon !== "") {
+            if (data.favicon.startsWith("http")) {
+              linkTag.setAttribute("href", data.favicon);
+            } else {
+              linkTag.setAttribute("href", data.long + data.favicon);
+            }
+          }
+        }
+      });
+
+      if (data.long && data.long !== "") {
+        window.location.href = data.long;
+      }
     }).catch((err) => {
+      console.error("redirect error", err);
       setInvalidURL(true);
       setShrinkError(true);
       setShrinkErrorReason("Invalid URL");
