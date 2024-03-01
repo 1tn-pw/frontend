@@ -1,5 +1,5 @@
 SERVICE_NAME=frontend
-NAMESPACE=todo-list
+NAMESPACE=1tn-pw
 GIT_COMMIT=`git rev-parse --short HEAD`
 -include .env
 export
