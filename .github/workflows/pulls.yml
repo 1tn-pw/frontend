@@ -15,13 +15,14 @@ jobs:
     timeout-minutes: 5
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/setup-node@v4
-        with:
-          node-version: 20
       - uses: actions/checkout@v4
         with:
           fetch-depth: 1
-      - run: pnpm install --frozen-lockfile
+      - uses: pnpm/action-setup@v3
+        with:
+          version: 8
+          run_install: |
+            - args: [--from-lockfile]
       - run: pnpm test
   automerge:
     runs-on: ubuntu-latest
