@@ -21,6 +21,7 @@ jobs:
       - uses: actions/checkout@v4
         with:
           fetch-depth: 1
+      - run: npm test
   automerge:
     runs-on: ubuntu-latest
     permissions:
