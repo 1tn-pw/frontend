@@ -1,7 +1,7 @@
 import React from 'react';
 import './App.css';
 import {Button, Flex, Space, Input, Layout, Spin, Result} from "antd";
-import {Header} from "antd/es/layout/layout";
+const {Header} = Layout;
 
 async function redirect(shortURL: string) {
   let apiURL = "https://api.1tn.pw/v1";
