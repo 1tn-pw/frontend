@@ -10,7 +10,7 @@ dependencies:
     version: 2.4.0(react@18.2.0)
   '@react-buddy/palette-antd':
     specifier: ^5.3.1
-    version: 5.3.1(@ant-design/icons@5.3.1)(antd@5.15.0)(react@18.2.0)
+    version: 5.3.1(@ant-design/icons@5.3.1)(antd@5.15.1)(react@18.2.0)
   '@types/node':
     specifier: ^20.11.25
     version: 20.11.25
@@ -21,8 +21,8 @@ dependencies:
     specifier: ^18.2.20
     version: 18.2.20
   antd:
-    specifier: ^5.15.0
-    version: 5.15.0(react-dom@18.2.0)(react@18.2.0)
+    specifier: ^5.15.1
+    version: 5.15.1(react-dom@18.2.0)(react@18.2.0)
   react:
     specifier: ^18.2.0
     version: 18.2.0
@@ -2429,7 +2429,7 @@ packages:
       react: 18.2.0
     dev: false
 
-  /@react-buddy/palette-antd@5.3.1(@ant-design/icons@5.3.1)(antd@5.15.0)(react@18.2.0):
+  /@react-buddy/palette-antd@5.3.1(@ant-design/icons@5.3.1)(antd@5.15.1)(react@18.2.0):
     resolution: {integrity: sha512-G75Pik29FnmyvANiGLSpMFpru4Uzv5woq/IFrkmfYmJb+5vW3lhc+Y/PftLqatSH9fjXs/UOszuSbPzlykT9cw==}
     peerDependencies:
       '@ant-design/icons': ^5.1.4
@@ -2438,7 +2438,7 @@ packages:
     dependencies:
       '@ant-design/icons': 5.3.1(react-dom@18.2.0)(react@18.2.0)
       '@react-buddy/ide-toolbox': 2.4.0(react@18.2.0)
-      antd: 5.15.0(react-dom@18.2.0)(react@18.2.0)
+      antd: 5.15.1(react-dom@18.2.0)(react@18.2.0)
       react: 18.2.0
     dev: false
 
@@ -3458,8 +3458,8 @@ packages:
     engines: {node: '>=12'}
     dev: false
 
-  /antd@5.15.0(react-dom@18.2.0)(react@18.2.0):
-    resolution: {integrity: sha512-6AsP4KjYxwMMv3ipSGNB6n5kwW/X3da5MgjaEIL1GFOYZZvdKSrKx9eijC4T5pUXB5hTCwYPfk9qtb1lZIPm8w==}
+  /antd@5.15.1(react-dom@18.2.0)(react@18.2.0):
+    resolution: {integrity: sha512-wPoydYS63jikgHEBhiEu+IoLXwyrDlDpbV68PCPXs3sa+nthvJOpvaV/0tfrkStkpc8WsBtsJfe9Lx7AUor5Rg==}
     peerDependencies:
       react: '>=16.9.0'
       react-dom: '>=16.9.0'
@@ -3484,7 +3484,7 @@ packages:
       rc-dialog: 9.4.0(react-dom@18.2.0)(react@18.2.0)
       rc-drawer: 7.1.0(react-dom@18.2.0)(react@18.2.0)
       rc-dropdown: 4.1.0(react-dom@18.2.0)(react@18.2.0)
-      rc-field-form: 1.42.0(react-dom@18.2.0)(react@18.2.0)
+      rc-field-form: 1.42.1(react-dom@18.2.0)(react@18.2.0)
       rc-image: 7.6.0(react-dom@18.2.0)(react@18.2.0)
       rc-input: 1.4.3(react-dom@18.2.0)(react@18.2.0)
       rc-input-number: 9.0.0(react-dom@18.2.0)(react@18.2.0)
@@ -9637,8 +9637,8 @@ packages:
       react-dom: 18.2.0(react@18.2.0)
     dev: false
 
-  /rc-field-form@1.42.0(react-dom@18.2.0)(react@18.2.0):
-    resolution: {integrity: sha512-z7U8J4wivKIRZ60VUhl/v5d4J4jgokcDVvzCFhJAxGjGYjpTUeSlZtEyH+CjiA5es6LgTkNS7P7vy4nsQOPBnQ==}
+  /rc-field-form@1.42.1(react-dom@18.2.0)(react@18.2.0):
+    resolution: {integrity: sha512-SqiEmWNP+I61Lt80+ofPvT+3l8Ij6vb35IS+x14gheVnCJN0SRnOwEgsqCEB5FslT7xqjUqDnU845hRZ1jzlAA==}
     engines: {node: '>=8.x'}
     peerDependencies:
       react: '>=16.9.0'
