@@ -5,7 +5,7 @@
   "dependencies": {
     "@react-buddy/ide-toolbox": "^2.4.0",
     "@react-buddy/palette-antd": "^5.3.1",
-    "@types/node": "^20.11.28",
+    "@types/node": "^20.11.29",
     "@types/react": "^18.2.66",
     "@types/react-dom": "^18.2.22",
     "antd": "^5.15.3",
