@@ -7,10 +7,10 @@
     "@react-buddy/palette-antd": "^5.3.1",
     "@types/node": "^20.12.7",
     "@types/react": "^18.3.1",
-    "@types/react-dom": "^18.2.25",
+    "@types/react-dom": "^18.3.0",
     "antd": "^5.16.4",
     "react": "^18.3.1",
-    "react-dom": "^18.2.0",
+    "react-dom": "^18.3.1",
     "react-scripts": "5.0.1",
     "typescript": "^4.9.5",
     "web-vitals": "^3.5.2"
