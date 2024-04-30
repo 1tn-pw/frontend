@@ -10,7 +10,7 @@ dependencies:
     version: 2.4.0(react@18.3.1)
   '@react-buddy/palette-antd':
     specifier: ^5.3.1
-    version: 5.3.1(@ant-design/icons@5.3.6)(antd@5.16.4)(react@18.3.1)
+    version: 5.3.1(@ant-design/icons@5.3.6)(antd@5.16.5)(react@18.3.1)
   '@types/node':
     specifier: ^20.12.7
     version: 20.12.7
@@ -21,8 +21,8 @@ dependencies:
     specifier: ^18.3.0
     version: 18.3.0
   antd:
-    specifier: ^5.16.4
-    version: 5.16.4(react-dom@18.3.1)(react@18.3.1)
+    specifier: ^5.16.5
+    version: 5.16.5(react-dom@18.3.1)(react@18.3.1)
   react:
     specifier: ^18.3.1
     version: 18.3.1
@@ -2585,7 +2585,7 @@ packages:
       react: 18.3.1
     dev: false
 
-  /@react-buddy/palette-antd@5.3.1(@ant-design/icons@5.3.6)(antd@5.16.4)(react@18.3.1):
+  /@react-buddy/palette-antd@5.3.1(@ant-design/icons@5.3.6)(antd@5.16.5)(react@18.3.1):
     resolution: {integrity: sha512-G75Pik29FnmyvANiGLSpMFpru4Uzv5woq/IFrkmfYmJb+5vW3lhc+Y/PftLqatSH9fjXs/UOszuSbPzlykT9cw==}
     peerDependencies:
       '@ant-design/icons': ^5.1.4
@@ -2594,7 +2594,7 @@ packages:
     dependencies:
       '@ant-design/icons': 5.3.6(react-dom@18.3.1)(react@18.3.1)
       '@react-buddy/ide-toolbox': 2.4.0(react@18.3.1)
-      antd: 5.16.4(react-dom@18.3.1)(react@18.3.1)
+      antd: 5.16.5(react-dom@18.3.1)(react@18.3.1)
       react: 18.3.1
     dev: false
 
@@ -3596,8 +3596,8 @@ packages:
     engines: {node: '>=12'}
     dev: false
 
-  /antd@5.16.4(react-dom@18.3.1)(react@18.3.1):
-    resolution: {integrity: sha512-H3LtVz5hiNgs0lL8U6pzi11rluR6RDRw1cm2pWX6CsvgZmybWsaTBV2h+d+zmgFfuch53TWs5uztLdAldIoYYw==}
+  /antd@5.16.5(react-dom@18.3.1)(react@18.3.1):
+    resolution: {integrity: sha512-8MGjf2ejlii2iVH4F960jwpdGiU+ISWPdiMA2O1AJSFJFA3eCxVLHkKRGiagsRmdo3AUU8tuPfQsqbLuEIlswA==}
     peerDependencies:
       react: '>=16.9.0'
       react-dom: '>=16.9.0'
@@ -3631,7 +3631,7 @@ packages:
       rc-motion: 2.9.0(react-dom@18.3.1)(react@18.3.1)
       rc-notification: 5.4.0(react-dom@18.3.1)(react@18.3.1)
       rc-pagination: 4.0.4(react-dom@18.3.1)(react@18.3.1)
-      rc-picker: 4.4.1(dayjs@1.11.10)(react-dom@18.3.1)(react@18.3.1)
+      rc-picker: 4.4.2(dayjs@1.11.10)(react-dom@18.3.1)(react@18.3.1)
       rc-progress: 4.0.0(react-dom@18.3.1)(react@18.3.1)
       rc-rate: 2.12.0(react-dom@18.3.1)(react@18.3.1)
       rc-resize-observer: 1.4.0(react-dom@18.3.1)(react@18.3.1)
@@ -9920,8 +9920,8 @@ packages:
       react-dom: 18.3.1(react@18.3.1)
     dev: false
 
-  /rc-picker@4.4.1(dayjs@1.11.10)(react-dom@18.3.1)(react@18.3.1):
-    resolution: {integrity: sha512-9/1pV12lMmUZtAbH0Sv/RIkeTdw/HSZs5G4GZFQ9UECLkCjOqhr9UF5Mf8dPuQ3xmw23SbXzOgDquN6eLFmZDw==}
+  /rc-picker@4.4.2(dayjs@1.11.10)(react-dom@18.3.1)(react@18.3.1):
+    resolution: {integrity: sha512-MdbAXvwiGyhb+bHe66qPps8xPQivzEgcyCp3/MPK4T+oER0gOmVRCEDxaD4FhYG/7GLH3rDrHpu79BvEn2JFTQ==}
     engines: {node: '>=8.x'}
     peerDependencies:
       date-fns: '>= 2.x'
