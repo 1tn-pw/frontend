@@ -36,8 +36,8 @@ dependencies:
     specifier: ^4.9.5
     version: 4.9.5
   web-vitals:
-    specifier: ^4.0.0
-    version: 4.0.0
+    specifier: ^4.0.1
+    version: 4.0.1
 
 devDependencies:
   '@babel/core':
@@ -11895,8 +11895,8 @@ packages:
       minimalistic-assert: 1.0.1
     dev: false
 
-  /web-vitals@4.0.0:
-    resolution: {integrity: sha512-8wQd4jkwFRwY5q3yAmHZAJ5MjnKR1vRACK+g2OEC8nUqi0WOxBrXfOxGNlJ+QtxzzSn/TkQO58wkW0coE68n0Q==}
+  /web-vitals@4.0.1:
+    resolution: {integrity: sha512-AW6qT/vXK3pbf+WgVcEBXY//AWCpXjVKgdb6rt0cARSUdtT+NUtZCOeo+CSLUX7PjSQ275DmxfkAs7QlPbtR6w==}
     dev: false
 
   /webidl-conversions@4.0.2:
