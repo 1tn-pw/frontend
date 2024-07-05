@@ -1,12 +1,13 @@
 // Shrink.tsx
 import { FC, useState, Dispatch, SetStateAction } from 'react';
 import {Button, Flex, Input, Result, Space} from 'antd';
+import styles from "./Shrink.module.css";
 
 interface ShrinkProps {
     setSpinning: Dispatch<SetStateAction<boolean>>;
 }
 
-const Shrink: FC<ShrinkProps> = ({ setSpinning }) => {
+export const Shrink: FC<ShrinkProps> = ({ setSpinning }) => {
     const [shrinkSuccess, setShrinkSuccess] = useState(false);
     const [shrinkError, setShrinkError] = useState(false);
     const [shrinkErrorReason, setShrinkErrorReason] = useState("");
@@ -102,8 +103,8 @@ const Shrink: FC<ShrinkProps> = ({ setSpinning }) => {
     return (
       <>
         {shrinkSuccess && (
-          <Flex className={"boxStyle"} justify={'center'} align={'center'} gap={"middle"}>
-            <Result status="success" title={shrinkResult} className={"resultStyle"} extra={
+          <Flex className={styles.boxStyle} justify={'center'} align={'center'} gap={"middle"}>
+            <Result status="success" title={shrinkResult} className={styles.resultStyle} extra={
               <>
                 <Button type="primary" key="copy" onClick={copyIt}>Copy</Button>
                 <Button type="primary" key="close" onClick={closeButton}>Close</Button>
@@ -112,8 +113,8 @@ const Shrink: FC<ShrinkProps> = ({ setSpinning }) => {
           </Flex>
         )}
         {shrinkError && (
-          <Flex className={"boxStyle"} justify={'center'} align={'center'} gap={"middle"}>
-            <Result status="error" title={shrinkErrorReason} className={"resultStyle"} extra={
+          <Flex className={styles.boxStyle} justify={'center'} align={'center'} gap={"middle"}>
+            <Result status="error" title={shrinkErrorReason} className={styles.resultStyle} extra={
               <>
               {invalidURL ? (
                 <Button type="primary" key="close" onClick={closeButton}>
@@ -129,15 +130,13 @@ const Shrink: FC<ShrinkProps> = ({ setSpinning }) => {
           </Flex>
         )}
         {showInput && (
-          <Flex className={"boxStyle"} justify={'center'} align={'center'} gap={"middle"}>
+          <Flex className={styles.boxStyle} justify={'center'} align={'center'} gap={"middle"}>
             <Space.Compact size={"large"} style-={{width: '100%'}}>
-              <Input id={"shrinkInput"} placeholder={"https://chewedfeed.com"} onPressEnter={shrinkIt} />
-              <Button id={"shrinkButton"} type={"primary"} onClick={shrinkIt}>Shrink</Button>
+              <Input id={"shrinkInput"} className={styles.shrinkInput} placeholder={"https://chewedfeed.com"} onPressEnter={shrinkIt} />
+              <Button id={"shrinkButton"} className={styles.shrinkButton} type={"primary"} onClick={shrinkIt}>Shrink</Button>
             </Space.Compact>
           </Flex>
         )}
       </>
     )
 }
-
-export default Shrink;

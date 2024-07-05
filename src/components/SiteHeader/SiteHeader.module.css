@@ -1,0 +1,37 @@
+.header {
+  width: 100%;
+  background-color: #001529;
+  color: white;
+  margin-right: 1%;
+  margin-left: 0;
+  height: 64px;
+  text-align: center;
+  display: flex;
+}
+
+.title {
+  width: 10%;
+  font-size: 24pt;
+  font-weight: bold;
+  text-align: center;
+  color: #F8F8F2;
+  background-color: #001529;
+}
+
+.menu {
+  width: 80%;
+  display: flex;
+  justify-content: space-between;
+  align-items: start;
+}
+
+.spacer {
+  width: 80%;
+  display: flex;
+}
+
+.login {
+  width: 10%;
+  align-items: end;
+  margin-top: 1rem;
+}
