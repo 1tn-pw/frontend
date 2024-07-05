@@ -1,27 +1,41 @@
-import React, { useState } from 'react';
+import React, {useEffect, useState} from 'react';
+import {Spin} from 'antd';
+import {useAuth} from "react-oidc-context";
+import {BrowserRouter} from "react-router-dom";
+import {Grid, Flex, Box} from "@radix-ui/themes"
+
 import './App.css';
-import Shrink from './components/shrink';
-import Redirect from './components/redirector';
-import { Layout, Spin, Flex } from 'antd';
-const { Header } = Layout;
+import {SiteHeader} from "./components/SiteHeader";
+import {SiteRouter} from "./components/SiteRouter"
 
 function App() {
+  const auth = useAuth()
+
   const [spinning, setSpinning] = useState(false);
 
-  const currentURL = window.location.href;
-  let shortURL = '';
-  if (currentURL.includes("/r/")) {
-    shortURL = currentURL.split("/r/")[1];
-  }
+  useEffect(() => {
+    return auth.events.addAccessTokenExpired((error) => {
+      auth.signoutSilent().catch(error => console.error("failed to auto-signin", error))
+    })
+  }, [auth])
 
   return (
-    <Flex gap={"middle"} vertical align={"start"}>
-      <Layout className={"layoutStyle"}>
-        <Header className={"headerStyle"}>1tn.pw</Header>
-      </Layout>
-      {shortURL ? <Redirect shortURL={shortURL} setSpinning={setSpinning} /> : <Shrink setSpinning={setSpinning} /> }
-      {spinning && <Spin spinning={spinning} fullscreen />}
-    </Flex>
+    <BrowserRouter>
+      <Grid columns={"1"} gap={"2"} width={"auto"}>
+        <Flex direction={"column"}>
+          <Box className={"headerStyle"}>
+            <SiteHeader />
+          </Box>
+          <Box grow={"1"} className={"contentStyle"}>
+            {spinning && <Spin spinning={spinning} fullscreen />}
+            <SiteRouter setSpinning={setSpinning} />
+          </Box>
+          <Box className={"footerStyle"}>
+            1tn.pw ©{new Date().getFullYear()} created by <a href={"https://chewedfeed.com"}>ChewedFeed</a>
+          </Box>
+        </Flex>
+      </Grid>
+    </BrowserRouter>
   );
 }
 

@@ -62,6 +62,10 @@ tasks:
     cmds:
       - kubectl set image deployment/{{.SERVICE_NAME}} {{.SERVICE_NAME}}=containers.chewed-k8s.net/{{.NAMESPACE}}/{{.SERVICE_NAME}}:latest -n {{.NAMESPACE}}
       - kubectl rollout restart deployment/{{.SERVICE_NAME}} -n {{.NAMESPACE}}
+  deploy-manual:
+    cmds:
+      - kubectl set image deployment/{{.SERVICE_NAME}} {{.SERVICE_NAME}}=containers.chewed-k8s.net/{{.NAMESPACE}}/{{.SERVICE_NAME}}:{{.CLI_ARGS}} -n {{.NAMESPACE}}
+      - kubectl rollout restart deployment/{{.SERVICE_NAME}} -n {{.NAMESPACE}}
 
   # Extras
   build-deploy:

@@ -14,7 +14,7 @@ interface shortDoc {
   favicon?: string;
 }
 
-const Redirect: FC<RedirectProps> = ({ shortURL, setSpinning }) => {
+export const Redirect: FC<RedirectProps> = ({ shortURL, setSpinning }) => {
   const [data, setData] = useState<shortDoc>({});
 
   const getLongURL = useCallback((shortURL: string) => {
@@ -70,5 +70,3 @@ const Redirect: FC<RedirectProps> = ({ shortURL, setSpinning }) => {
 
   return null;
 }
-
-export default Redirect;

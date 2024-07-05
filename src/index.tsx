@@ -1,11 +1,16 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
 import {ConfigProvider} from "antd";
 import {DevSupport} from "@react-buddy/ide-toolbox";
+import {Theme} from "@radix-ui/themes";
+import '@radix-ui/themes/styles.css'
+
 import {ComponentPreviews, useInitial} from "./dev";
+import reportWebVitals from './reportWebVitals';
+import './index.css';
+import App from './App';
+import {oidcConfig} from "./app.config";
+import {AuthProvider} from "react-oidc-context";
 
 const root = ReactDOM.createRoot(
     document.getElementById('root') as HTMLElement
@@ -13,16 +18,15 @@ const root = ReactDOM.createRoot(
 root.render(
     <React.StrictMode>
         <ConfigProvider direction={"ltr"}>
-            <DevSupport ComponentPreviews={ComponentPreviews}
-                        useInitialHook={useInitial}
-            >
-                <App/>
+            <DevSupport ComponentPreviews={ComponentPreviews} useInitialHook={useInitial}>
+              <AuthProvider {...oidcConfig}>
+                <Theme accentColor="purple" grayColor="slate">
+                  <App/>
+                </Theme>
+              </AuthProvider>
             </DevSupport>
         </ConfigProvider>
     </React.StrictMode>
 );
 
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
 reportWebVitals();
