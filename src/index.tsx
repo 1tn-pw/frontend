@@ -1,18 +1,17 @@
 import React from 'react';
-import ReactDOM from 'react-dom/client';
+import {createRoot} from 'react-dom/client';
 import {ConfigProvider} from "antd";
 import {DevSupport} from "@react-buddy/ide-toolbox";
 import {Theme} from "@radix-ui/themes";
 import '@radix-ui/themes/styles.css'
 
 import {ComponentPreviews, useInitial} from "./dev";
-import reportWebVitals from './reportWebVitals';
 import './index.css';
 import App from './App';
 import {oidcConfig} from "./app.config";
 import {AuthProvider} from "react-oidc-context";
 
-const root = ReactDOM.createRoot(
+const root = createRoot(
     document.getElementById('root') as HTMLElement
 );
 root.render(
@@ -29,4 +28,3 @@ root.render(
     </React.StrictMode>
 );
 
-reportWebVitals();

@@ -15,6 +15,7 @@ function App() {
 
   useEffect(() => {
     return auth.events.addAccessTokenExpired((error) => {
+      console.error("token err", error)
       auth.signoutSilent().catch(error => console.error("failed to auto-signin", error))
     })
   }, [auth])
@@ -26,7 +27,7 @@ function App() {
           <Box className={"headerStyle"}>
             <SiteHeader />
           </Box>
-          <Box grow={"1"} className={"contentStyle"}>
+          <Box className={"contentStyle"} height={"90vh"}>
             {spinning && <Spin spinning={spinning} fullscreen />}
             <SiteRouter setSpinning={setSpinning} />
           </Box>
