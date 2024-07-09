@@ -1,19 +1,17 @@
-// Shrink.tsx
-import { FC, useState, Dispatch, SetStateAction } from 'react';
-import {Button, Flex, Input, Result, Space} from 'antd';
+import { FC, useState } from 'react';
+import {Button, Input, Result, Space, Spin} from 'antd';
 import styles from "./Shrink.module.css";
+import {Box, Grid, Flex} from "@radix-ui/themes";
+import {SiteHeader} from "../../components/SiteHeader";
 
-interface ShrinkProps {
-    setSpinning: Dispatch<SetStateAction<boolean>>;
-}
-
-export const Shrink: FC<ShrinkProps> = ({ setSpinning }) => {
+export const Shrink: FC = () => {
     const [shrinkSuccess, setShrinkSuccess] = useState(false);
     const [shrinkError, setShrinkError] = useState(false);
     const [shrinkErrorReason, setShrinkErrorReason] = useState("");
     const [showInput, setShowInput] = useState(true);
     const [shrinkResult, setShrinkResult] = useState("");
     const [invalidURL, setInvalidURL] = useState(false);
+    const [spinning, setSpinning] = useState(false);
 
     const copyIt = async () => {
       try {
@@ -80,7 +78,7 @@ export const Shrink: FC<ShrinkProps> = ({ setSpinning }) => {
         const data = await res.json();
         if (res.ok) {
             setShrinkSuccess(true);
-            setShrinkResult(`https://1tn.pw/r/${data.short}`);
+            setShrinkResult(`https://1tn.pw/${data.short}`);
             setSpinning(false);
         } else {
             setShrinkError(true);
@@ -100,43 +98,57 @@ export const Shrink: FC<ShrinkProps> = ({ setSpinning }) => {
       }
     }
 
+    if (spinning) {
+      return <Spin spinning={true} fullscreen />
+    }
+
     return (
-      <>
-        {shrinkSuccess && (
-          <Flex className={styles.boxStyle} justify={'center'} align={'center'} gap={"middle"}>
-            <Result status="success" title={shrinkResult} className={styles.resultStyle} extra={
-              <>
-                <Button type="primary" key="copy" onClick={copyIt}>Copy</Button>
-                <Button type="primary" key="close" onClick={closeButton}>Close</Button>
-              </>
-            }/>
-          </Flex>
-        )}
-        {shrinkError && (
-          <Flex className={styles.boxStyle} justify={'center'} align={'center'} gap={"middle"}>
-            <Result status="error" title={shrinkErrorReason} className={styles.resultStyle} extra={
-              <>
-              {invalidURL ? (
-                <Button type="primary" key="close" onClick={closeButton}>
-                  Close
-                </Button>
-              ) : (
-                <Button type="primary" key="console" onClick={shrinkIt}>
-                  Try Again
-                </Button>
-              )}
-              </>
-            }/>
-          </Flex>
-        )}
-        {showInput && (
-          <Flex className={styles.boxStyle} justify={'center'} align={'center'} gap={"middle"}>
-            <Space.Compact size={"large"} style-={{width: '100%'}}>
-              <Input id={"shrinkInput"} className={styles.shrinkInput} placeholder={"https://chewedfeed.com"} onPressEnter={shrinkIt} />
-              <Button id={"shrinkButton"} className={styles.shrinkButton} type={"primary"} onClick={shrinkIt}>Shrink</Button>
-            </Space.Compact>
-          </Flex>
-        )}
-      </>
+      <Grid columns={"1"} gap={"2"} width={"auto"}>
+        <Flex direction={"column"}>
+          <Box className={"headerStyle"}>
+            <SiteHeader />
+          </Box>
+          <Box className={"contentStyle"} height={"95vh"}>
+            {shrinkSuccess && (
+              <Flex className={styles.boxStyle} justify={'center'} align={'center'} gap={"middle"}>
+                <Result status="success" title={shrinkResult} className={styles.resultStyle} extra={
+                  <>
+                    <Button type="primary" key="copy" onClick={copyIt}>Copy</Button>
+                    <Button type="primary" key="close" onClick={closeButton}>Close</Button>
+                  </>
+                }/>
+              </Flex>
+            )}
+            {shrinkError && (
+              <Flex className={styles.boxStyle} justify={'center'} align={'center'} gap={"middle"}>
+                <Result status="error" title={shrinkErrorReason} className={styles.resultStyle} extra={
+                  <>
+                  {invalidURL ? (
+                    <Button type="primary" key="close" onClick={closeButton}>
+                      Close
+                    </Button>
+                  ) : (
+                    <Button type="primary" key="console" onClick={shrinkIt}>
+                      Try Again
+                    </Button>
+                  )}
+                  </>
+                }/>
+              </Flex>
+            )}
+            {showInput && (
+              <Flex className={styles.boxStyle} justify={'center'} align={'center'} gap={"middle"}>
+                <Space.Compact size={"large"} style-={{width: '100%'}}>
+                  <Input id={"shrinkInput"} className={styles.shrinkInput} placeholder={"https://chewedfeed.com"} onPressEnter={shrinkIt} />
+                  <Button id={"shrinkButton"} className={styles.shrinkButton} type={"primary"} onClick={shrinkIt}>Shrink</Button>
+                </Space.Compact>
+              </Flex>
+            )}
+          </Box>
+          <Box className={"footerStyle"}>
+            1tn.pw ©{new Date().getFullYear()} created by <a href={"https://chewedfeed.com"}>ChewedFeed</a>
+          </Box>
+        </Flex>
+      </Grid>
     )
 }

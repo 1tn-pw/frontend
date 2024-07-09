@@ -3,18 +3,10 @@
   "version": "0.1.0",
   "private": false,
   "dependencies": {
+    "@flags-gg/react-library": "^1.5.1",
     "@radix-ui/react-icons": "^1.3.0",
     "@radix-ui/react-navigation-menu": "^1.2.0",
     "@radix-ui/themes": "^3.1.1",
-    "@react-buddy/ide-toolbox": "^2.4.0",
-    "@react-buddy/palette-antd": "^5.3.1",
-    "@testing-library/jest-dom": "^5.17.0",
-    "@testing-library/react": "^13.4.0",
-    "@testing-library/user-event": "^14.5.2",
-    "@types/jest": "^27.5.2",
-    "@types/node": "^20.11.22",
-    "@types/react": "^18.2.60",
-    "@types/react-dom": "^18.2.19",
     "antd": "^5.14.2",
     "oidc-client-ts": "^3.0.1",
     "react": "^18.2.0",
@@ -22,12 +14,12 @@
     "react-oidc-context": "^3.1.0",
     "react-router-dom": "^6.24.1",
     "react-scripts": "5.0.1",
-    "typescript": "^4.9.5",
     "web-vitals": "^3.5.2"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
+    "start": "react-app-rewired start",
+    "build": "react-app-rewired build",
+    "dev": "NODE_ENV=development react-app-rewired start",
     "test": "jest",
     "eject": "react-scripts eject"
   },
@@ -48,5 +40,21 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "@react-buddy/ide-toolbox": "^2.4.0",
+    "@react-buddy/palette-antd": "^5.3.1",
+    "@testing-library/jest-dom": "^5.17.0",
+    "@testing-library/react": "^13.4.0",
+    "@testing-library/user-event": "^14.5.2",
+    "@types/jest": "^27.5.2",
+    "@types/node": "^20.14.10",
+    "@types/react": "^18.3.3",
+    "@types/react-dom": "^18.3.0",
+    "babel-loader": "^9.1.3",
+    "customize-cra": "^1.0.0",
+    "react-app-rewired": "^2.2.1",
+    "ts-loader": "^9.5.1",
+    "typescript": "^4.9.5"
   }
 }

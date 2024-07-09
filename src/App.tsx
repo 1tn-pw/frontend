@@ -1,17 +1,13 @@
-import React, {useEffect, useState} from 'react';
-import {Spin} from 'antd';
+import React, {useEffect} from 'react';
 import {useAuth} from "react-oidc-context";
 import {BrowserRouter} from "react-router-dom";
-import {Grid, Flex, Box} from "@radix-ui/themes"
+import {FlagsProvider} from "@flags-gg/react-library"
 
 import './App.css';
-import {SiteHeader} from "./components/SiteHeader";
 import {SiteRouter} from "./components/SiteRouter"
 
 function App() {
   const auth = useAuth()
-
-  const [spinning, setSpinning] = useState(false);
 
   useEffect(() => {
     return auth.events.addAccessTokenExpired((error) => {
@@ -22,20 +18,14 @@ function App() {
 
   return (
     <BrowserRouter>
-      <Grid columns={"1"} gap={"2"} width={"auto"}>
-        <Flex direction={"column"}>
-          <Box className={"headerStyle"}>
-            <SiteHeader />
-          </Box>
-          <Box className={"contentStyle"} height={"90vh"}>
-            {spinning && <Spin spinning={spinning} fullscreen />}
-            <SiteRouter setSpinning={setSpinning} />
-          </Box>
-          <Box className={"footerStyle"}>
-            1tn.pw ©{new Date().getFullYear()} created by <a href={"https://chewedfeed.com"}>ChewedFeed</a>
-          </Box>
-        </Flex>
-      </Grid>
+      <FlagsProvider
+        options={{
+          projectId: "7b517e7a-4fd1-4172-8cca-ef2b91ee8a84",
+          agentId: "469f41e5-22bf-4696-b037-d3c3c04266b0",
+          environmentId: "72bd9b4b-458f-4c45-a3c1-d13fb9097eb2"
+        }}>
+        <SiteRouter />
+      </FlagsProvider>
     </BrowserRouter>
   );
 }

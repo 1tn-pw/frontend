@@ -1,35 +1,25 @@
-import { Dispatch, SetStateAction, FC } from "react";
+import { FC } from "react";
 import {useRoutes} from "react-router-dom";
 
 import {Shrink} from '../../pages/Shrink';
 import {Redirect} from '../../pages/Redirector';
-import {Dashboard} from '../../pages/Dashboard';
 
-interface SiteRouterProps {
-  setSpinning: Dispatch<SetStateAction<boolean>>;
-}
 
-export const SiteRouter: FC<SiteRouterProps> = ({setSpinning}) => {
+export const SiteRouter: FC = () => {
   const currentURL = window.location.href;
-  const shortURL = currentURL.split("/")[1];
+  const shortURL = currentURL.split("/")[3];
 
   const routes = [
     {
       path: "/",
-      element: <Shrink setSpinning={setSpinning} />,
-      children: [
-        
-        {
-          path: "dashboard",
-          element: <Dashboard />
-        },
-        {
-          path: "*",
-          element: <Redirect shortURL={shortURL} setSpinning={setSpinning} />
-        },
-      ]
+      element: <Shrink />,
+      index: true,
     },
+    {
+      path: "*",
+      element: <Redirect shortURL={shortURL} />
+    }
   ]
-  
+
   return useRoutes(routes)
 }

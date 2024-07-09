@@ -3,9 +3,11 @@ import {Menu, MenuProps} from "antd";
 import {LoginButton} from "../LoginButton";
 import {useAuth} from "react-oidc-context";
 import {Link, NavigationMenu, NavigationMenuItem, NavigationMenuList} from "@radix-ui/react-navigation-menu";
+import {useFlags} from "@flags-gg/react-library";
 
 export const SiteHeader = () => {
   const auth = useAuth();
+  const {is} = useFlags();
 
   const menuItems: MenuProps['items'] = [
     // {key: "shrink", label: "Link Reducer", icon: <ShrinkOutlined />},
@@ -18,7 +20,7 @@ export const SiteHeader = () => {
         window.location.href = "/shrink";
         break;
       case "dashboard":
-        window.location.href = "/";
+        window.location.href = "/dashboard";
         break;
     }
   }
@@ -35,7 +37,7 @@ export const SiteHeader = () => {
                 <Link href={"/shrink"}>Link Reducer</Link>
               </NavigationMenuItem>
               <NavigationMenuItem>
-                <Link href={"/"}>Dashboard</Link>
+                <Link href={"/dashboard"}>Dashboard</Link>
               </NavigationMenuItem>
             </NavigationMenuList>
           </NavigationMenu>
@@ -44,9 +46,11 @@ export const SiteHeader = () => {
       ) : (
         <div className={styles.spacer}>&nbsp;</div>
       )}
-      <div className={styles.login}>
-        <LoginButton />
-      </div>
+      {is("signin").enabled() && (
+        <div className={styles.login}>
+          <LoginButton />
+        </div>
+      )}
     </div>
   );
 }
