@@ -3,6 +3,7 @@ import {Menu, MenuProps} from "antd";
 import {LoginButton} from "../LoginButton";
 import {useAuth} from "react-oidc-context";
 import {Link, NavigationMenu, NavigationMenuItem, NavigationMenuList} from "@radix-ui/react-navigation-menu";
+import {Link as Linker} from "@radix-ui/themes"
 import {useFlags} from "@flags-gg/react-library";
 
 export const SiteHeader = () => {
@@ -27,7 +28,11 @@ export const SiteHeader = () => {
 
   return (
     <div className={styles.header}>
-      <div className={styles.title}>1tn.pw</div>
+      <div className={styles.title}>
+        <Linker href={"/"}>
+          <img src="/logo512.png" alt="logo" className={styles.titleImg} />
+        </Linker>
+      </div>
 
       {auth?.isAuthenticated ? (
         <div className={styles.menu}>

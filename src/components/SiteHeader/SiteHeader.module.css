@@ -17,6 +17,13 @@
   color: #F8F8F2;
   background-color: #001529;
 }
+.titleImg {
+  width: 250px;
+  height: 70px;
+}
+.titleImg:hover {
+  cursor: pointer;
+}
 
 .menu {
   width: 80%;
