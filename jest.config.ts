@@ -6,6 +6,9 @@ const config: Config.InitialOptions = {
   transform: {
     '^.+\\.tsx?$': 'ts-jest',
   },
+  transformIgnorePatterns: [
+    "/node_modules/(?!(\\@flags-gg\\/react-library)/)"
+  ],
   clearMocks: true,
   testRegex: '(/__tests__/.*|(\\.|/)(test|spec))\\.(jsx?|tsx?)$',
   moduleNameMapper: {
