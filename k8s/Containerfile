@@ -12,6 +12,7 @@ COPY public ./public
 COPY src ./src
 COPY public ./public
 COPY tsconfig.json ./
+COPY config-overrides.js ./
 
 # Install dependencies
 FROM base AS dependencies

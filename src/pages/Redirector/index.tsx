@@ -1,9 +1,8 @@
-// Redirect.tsx
-import {FC, useState, useEffect, Dispatch, useCallback} from 'react';
+import {FC, useState, useEffect, useCallback} from 'react';
+import {Spin} from "antd";
 
 interface RedirectProps {
   shortURL: string;
-  setSpinning: Dispatch<boolean>;
 }
 
 interface shortDoc {
@@ -14,7 +13,7 @@ interface shortDoc {
   favicon?: string;
 }
 
-export const Redirect: FC<RedirectProps> = ({ shortURL, setSpinning }) => {
+export const Redirect: FC<RedirectProps> = ({ shortURL }) => {
   const [data, setData] = useState<shortDoc>({});
 
   const getLongURL = useCallback((shortURL: string) => {
@@ -30,14 +29,12 @@ export const Redirect: FC<RedirectProps> = ({ shortURL, setSpinning }) => {
       setData(data);
     }).catch((err) => {
       console.error("redirect error", err);
-      setSpinning(false);
     })
-  }, [setSpinning]);
+  }, []);
 
   useEffect(() => {
     getLongURL(shortURL)
-    setSpinning(true);
-  }, [shortURL, getLongURL, setSpinning]);
+  }, [shortURL, getLongURL]);
 
   useEffect(() => {
     const metaTags = document.getElementsByName("meta") as NodeListOf<HTMLMetaElement>
@@ -63,10 +60,16 @@ export const Redirect: FC<RedirectProps> = ({ shortURL, setSpinning }) => {
     });
 
     if (data.long && data.long !== "") {
-      setSpinning(false);
       window.location.href = data.long;
     }
-  }, [setSpinning, data]);
+  }, [data]);
 
-  return null;
+  return <Spin
+    fullscreen
+    size={"large"}
+    spinning={true}
+    style={{
+      color: "#1890ff",
+      zIndex: 9999,
+    }} />;
 }

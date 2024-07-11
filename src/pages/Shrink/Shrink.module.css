@@ -17,7 +17,7 @@
 }
 
 .shrinkButton {
-  color: #414558;
+  color: #6272A4;
   background-color: #8AFF80;
   border-color: #21222C;
   border-left: none;
@@ -27,6 +27,7 @@
   margin-top: 10%;
   background-color: #21222C;
   border-radius: .5rem;
+  color: #F8F8F2;
 }
 .resultStyle > .ant-result-title {
   color: #F8F8F2;
