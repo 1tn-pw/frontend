@@ -45,7 +45,7 @@
     "@jest/types": "^29.6.3",
     "@react-buddy/ide-toolbox": "^2.4.0",
     "@react-buddy/palette-antd": "^5.3.1",
-    "@testing-library/jest-dom": "^6.6.1",
+    "@testing-library/jest-dom": "^6.6.2",
     "@testing-library/react": "^16.0.1",
     "@testing-library/user-event": "^14.5.2",
     "@types/jest": "^29.5.13",
