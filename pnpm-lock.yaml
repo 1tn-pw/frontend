@@ -21,8 +21,8 @@ importers:
         specifier: ^3.1.4
         version: 3.1.4(@types/react-dom@18.3.1)(@types/react@18.3.12)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       antd:
-        specifier: ^5.21.5
-        version: 5.21.5(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+        specifier: ^5.21.6
+        version: 5.21.6(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       oidc-client-ts:
         specifier: ^3.1.0
         version: 3.1.0
@@ -53,7 +53,7 @@ importers:
         version: 2.4.0(react@18.3.1)
       '@react-buddy/palette-antd':
         specifier: ^5.3.1
-        version: 5.3.1(@ant-design/icons@5.5.1(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(antd@5.21.5(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(react@18.3.1)
+        version: 5.3.1(@ant-design/icons@5.5.1(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(antd@5.21.6(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(react@18.3.1)
       '@testing-library/jest-dom':
         specifier: ^6.6.2
         version: 6.6.2
@@ -2521,8 +2521,8 @@ packages:
     resolution: {integrity: sha512-bN798gFfQX+viw3R7yrGWRqnrN2oRkEkUjjl4JNn4E8GxxbjtG3FbrEIIY3l8/hrwUwIeCZvi4QuOTP4MErVug==}
     engines: {node: '>=12'}
 
-  antd@5.21.5:
-    resolution: {integrity: sha512-g/c8VkdruKDCVA6di9Ow1fG6dLtYJ1IOraPo7vXaY7DoQ56A3HExaFaH0fBEwTYKC0ICeftC4iA5eAjrF6/b9w==}
+  antd@5.21.6:
+    resolution: {integrity: sha512-EviOde/VEu+OsIKH5t6YXTMmmNeg9R85m0W5zXAo+Np8Latg9q10691JvAqOTMpnrRmbdeKUQL1Krp69Bzbe/g==}
     peerDependencies:
       react: '>=16.9.0'
       react-dom: '>=16.9.0'
@@ -9605,11 +9605,11 @@ snapshots:
     dependencies:
       react: 18.3.1
 
-  '@react-buddy/palette-antd@5.3.1(@ant-design/icons@5.5.1(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(antd@5.21.5(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(react@18.3.1)':
+  '@react-buddy/palette-antd@5.3.1(@ant-design/icons@5.5.1(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(antd@5.21.6(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(react@18.3.1)':
     dependencies:
       '@ant-design/icons': 5.5.1(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       '@react-buddy/ide-toolbox': 2.4.0(react@18.3.1)
-      antd: 5.21.5(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+      antd: 5.21.6(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       react: 18.3.1
 
   '@remix-run/router@1.20.0': {}
@@ -10250,7 +10250,7 @@ snapshots:
 
   ansi-styles@6.2.1: {}
 
-  antd@5.21.5(react-dom@18.3.1(react@18.3.1))(react@18.3.1):
+  antd@5.21.6(react-dom@18.3.1(react@18.3.1))(react@18.3.1):
     dependencies:
       '@ant-design/colors': 7.1.0
       '@ant-design/cssinjs': 1.21.1(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
