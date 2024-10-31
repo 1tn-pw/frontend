@@ -4,7 +4,7 @@
   "private": false,
   "dependencies": {
     "@flags-gg/react-library": "^1.9.4",
-    "@radix-ui/react-icons": "^1.3.0",
+    "@radix-ui/react-icons": "^1.3.1",
     "@radix-ui/react-navigation-menu": "^1.2.1",
     "@radix-ui/themes": "^3.1.4",
     "antd": "^5.21.6",
