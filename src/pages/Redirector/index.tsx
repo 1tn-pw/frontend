@@ -17,7 +17,7 @@ export const Redirect: FC<RedirectProps> = ({ shortURL }) => {
   const [data, setData] = useState<shortDoc>({});
 
   const getLongURL = useCallback((shortURL: string) => {
-    let apiURL = "https://api.1tn.pw/v1";
+    let apiURL = "https://api.1tn.pw";
     if (process.env.NODE_ENV === "development") {
       apiURL = "http://localhost:8081";
     }
