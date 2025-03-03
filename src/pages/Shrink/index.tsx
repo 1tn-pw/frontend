@@ -55,9 +55,6 @@ export const Shrink: FC = () => {
         setShowInput(false);
         let url = (document.getElementById("shrinkInput") as HTMLInputElement).value;
         let apiURL = "https://api.1tn.pw/create";
-        if (process.env.NODE_ENV === "development") {
-            apiURL = "http://localhost:8081/create";
-        }
         if (!validateURL(url)) {
             return;
         }
