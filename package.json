@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": false,
   "dependencies": {
-    "@flags-gg/react-library": "^1.11.1",
+    "@flags-gg/react-library": "^1.12.0",
     "@radix-ui/react-icons": "^1.3.2",
     "@radix-ui/react-navigation-menu": "^1.2.6",
     "@radix-ui/themes": "^3.2.1",
