@@ -1028,7 +1028,7 @@ packages:
   '@eslint/js@8.57.0':
     resolution: {integrity: sha512-Ys+3g2TaW7gADOJzPt83SJtCDhMjndcDMFVQ/Tj9iA1BfJzFKD9mAUXT3OenpuPHbI6P/myECxRJrofUsDx/5g==}
     engines: {node: ^12.22.0 || ^14.17.0 || >=16.0.0}
-
+    
   '@flags-gg/react-library@1.14.1':
     resolution: {integrity: sha512-xxbqZbVBw6033INVjnxOAsRTNmQAfM9WNNk/COR/zfCoCpl1Q+lbZGJ2Ma1NeADoLlUdtONXhXui3TlzPut1yA==}
     peerDependencies:
@@ -5077,7 +5077,7 @@ packages:
 
   lru-cache@5.1.1:
     resolution: {integrity: sha512-KpNARQA3Iwv+jTA0utUVVbrh+Jlrr1Fv0e56GGzAFOXN7dk/FviaDW8LHmK52DlcH4WP2n6gI8vN1aesBFgo9w==}
-
+    
   lucide-react@0.511.0:
     resolution: {integrity: sha512-VK5a2ydJ7xm8GvBeKLS9mu1pVK6ucef9780JVUjw6bAjJL/QXnd4Y0p7SPeOUMC27YhzNCZvm5d/QX0Tp3rc0w==}
     peerDependencies:
@@ -13585,7 +13585,7 @@ snapshots:
       - ts-node
 
   jiti@1.21.6: {}
-
+  
   jotai@2.12.5(@types/react@18.3.23)(react@18.3.1):
     optionalDependencies:
       '@types/react': 18.3.23
