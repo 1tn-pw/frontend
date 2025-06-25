@@ -10,10 +10,15 @@ function App() {
   const auth = useAuth()
 
   useEffect(() => {
-    return auth.events.addAccessTokenExpired((error) => {
+    const unsubscribe = auth.events.addAccessTokenExpired((error) => {
       console.error("token err", error)
       auth.signoutSilent().catch(error => console.error("failed to auto-signin", error))
     })
+    return () => {
+      if (unsubscribe) {
+        unsubscribe()
+      }
+    }
   }, [auth])
 
   return (
