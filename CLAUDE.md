@@ -9,11 +9,13 @@ This is a React-based frontend for 1tn.pw, a URL shortening service. The applica
 - Redirect page (`/*`) - Handles redirects for shortened URLs by fetching long URLs from the API
 
 ## Commands
+This uses pnpm
 
 ### Development
-- `npm start` or `npm run dev` - Start development server
-- `npm run build` - Build for production using react-app-rewired
-- `npm test` - Run Jest tests
+- `pnpm start` or `pnpm run dev` - Start Vite development server
+- `pnpm run build` - Build for production using Vite
+- `pnpm run preview` - Preview production build locally
+- `pnpm test` - Run Jest tests
 
 ### Task Runner (Taskfile.yml)
 - `task test` - Run npm test
@@ -48,9 +50,13 @@ Simple two-route system in `src/components/SiteRouter/index.tsx`:
 - Note: Redirector component has localhost override for development
 
 ### Build Configuration
-- Uses `react-app-rewired` with custom config-overrides.js
+- Uses **Vite** for blazing fast development and optimized production builds
+- Vite configuration includes:
+  - React plugin for JSX/TSX support
+  - Optimized dependency pre-bundling for @flags-gg/react-library
+  - Source maps enabled for debugging
 - Jest configured for TypeScript with CSS module support
-- Transforms @flags-gg/react-library in Jest transformIgnorePatterns
+- TypeScript configured with modern ES2020 target
 
 ### Deployment
 Containerized deployment with:

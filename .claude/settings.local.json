@@ -5,7 +5,12 @@
       "Bash(npm run build:*)",
       "Bash(ls:*)",
       "Bash(npx webpack-bundle-analyzer:*)",
-      "Bash(rg:*)"
+      "Bash(rg:*)",
+      "Bash(npm install:*)",
+      "Bash(pnpm install:*)",
+      "Bash(rm:*)",
+      "Bash(pnpm dev:*)",
+      "Bash(pnpm build:*)"
     ],
     "deny": []
   }
