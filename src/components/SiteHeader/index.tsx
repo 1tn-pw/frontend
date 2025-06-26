@@ -1,5 +1,6 @@
 import styles from "./SiteHeader.module.css"
-import {Menu, MenuProps} from "antd";
+// Remove unused Menu component - not being used effectively
+// import {Menu, MenuProps} from "antd";
 import {LoginButton} from "../LoginButton";
 import {useAuth} from "react-oidc-context";
 import {Link, NavigationMenu, NavigationMenuItem, NavigationMenuList} from "@radix-ui/react-navigation-menu";
@@ -10,21 +11,7 @@ export const SiteHeader = () => {
   const auth = useAuth();
   const {is} = useFlags();
 
-  const menuItems: MenuProps['items'] = [
-    // {key: "shrink", label: "Link Reducer", icon: <ShrinkOutlined />},
-    // {key: "dashboard", label: "Dashboard", icon: <ApartmentOutlined />},
-  ]
-
-  const clickLink: MenuProps['onClick'] = (e) => {
-    switch (e.key) {
-      case "shrink":
-        window.location.href = "/shrink";
-        break;
-      case "dashboard":
-        window.location.href = "/dashboard";
-        break;
-    }
-  }
+  // Removed unused menu items and click handler
 
   return (
     <div className={styles.header}>
@@ -46,7 +33,7 @@ export const SiteHeader = () => {
               </NavigationMenuItem>
             </NavigationMenuList>
           </NavigationMenu>
-          <Menu theme="dark" mode="horizontal" items={menuItems} onClick={clickLink} />
+          {/* Removed unused Menu component */}
         </div>
       ) : (
         <div className={styles.spacer}>&nbsp;</div>

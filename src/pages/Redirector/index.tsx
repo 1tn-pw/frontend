@@ -1,5 +1,5 @@
 import {FC, useState, useEffect, useCallback, useRef} from 'react';
-import {Spin} from "antd";
+import {Spinner} from "@radix-ui/themes";
 
 interface RedirectProps {
   shortURL: string;
@@ -25,7 +25,7 @@ export const Redirect: FC<RedirectProps> = ({ shortURL }) => {
     
     abortControllerRef.current = new AbortController();
     let apiURL = "https://api.1tn.pw";
-    apiURL = "http://localhost:8081";
+    //apiURL = "http://localhost:8081";
 
     fetch(`${apiURL}/${shortURL}`, {
         method: "GET",
@@ -96,12 +96,13 @@ export const Redirect: FC<RedirectProps> = ({ shortURL }) => {
     };
   }, [data]);
 
-  return <Spin
-    fullscreen
-    size={"large"}
-    spinning={true}
+  return <Spinner 
+    size="3" 
     style={{
-      color: "#1890ff",
+      position: 'fixed', 
+      top: '50%', 
+      left: '50%', 
+      transform: 'translate(-50%, -50%)',
       zIndex: 9999,
     }} />;
 }

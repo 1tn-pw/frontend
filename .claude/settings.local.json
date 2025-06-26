@@ -1,7 +1,11 @@
 {
   "permissions": {
     "allow": [
-      "Bash(find:*)"
+      "Bash(find:*)",
+      "Bash(npm run build:*)",
+      "Bash(ls:*)",
+      "Bash(npx webpack-bundle-analyzer:*)",
+      "Bash(rg:*)"
     ],
     "deny": []
   }

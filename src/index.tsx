@@ -1,6 +1,6 @@
 import React from 'react';
 import {createRoot} from 'react-dom/client';
-import {ConfigProvider} from "antd";
+// Removed heavy ConfigProvider from antd
 import {DevSupport} from "@react-buddy/ide-toolbox";
 import {Theme} from "@radix-ui/themes";
 import '@radix-ui/themes/styles.css'
@@ -16,15 +16,13 @@ const root = createRoot(
 );
 root.render(
     <React.StrictMode>
-        <ConfigProvider direction={"ltr"}>
-            <DevSupport ComponentPreviews={ComponentPreviews} useInitialHook={useInitial}>
-              <AuthProvider {...oidcConfig}>
-                <Theme accentColor="purple" grayColor="slate">
-                  <App/>
-                </Theme>
-              </AuthProvider>
-            </DevSupport>
-        </ConfigProvider>
+        <DevSupport ComponentPreviews={ComponentPreviews} useInitialHook={useInitial}>
+          <AuthProvider {...oidcConfig}>
+            <Theme accentColor="purple" grayColor="slate">
+              <App/>
+            </Theme>
+          </AuthProvider>
+        </DevSupport>
     </React.StrictMode>
 );
 

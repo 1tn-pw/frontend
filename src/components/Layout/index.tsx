@@ -1,4 +1,4 @@
-import {Spin} from "antd"
+import {Spinner} from "@radix-ui/themes"
 import {FC} from "react";
 import {Outlet} from "react-router-dom";
 import {Box, Flex, Grid} from "@radix-ui/themes";
@@ -15,7 +15,7 @@ export const Layout: FC<LayoutProps> = ({spinning}) => {
           <SiteHeader />
         </Box>
         <Box className={"contentStyle"} height={"95vh"}>
-          {spinning && <Spin spinning={spinning} fullscreen />}
+          {spinning && <Spinner size="3" style={{position: 'fixed', top: '50%', left: '50%', transform: 'translate(-50%, -50%)', zIndex: 9999}} />}
           <Outlet />
         </Box>
         <Box className={"footerStyle"}>

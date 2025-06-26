@@ -1,7 +1,8 @@
 import { FC, useState } from 'react';
-import {Button, Input, Result, Space, Spin} from 'antd';
+// Replace heavy Ant Design components with lighter alternatives
+import {Button, Flex, Spinner} from "@radix-ui/themes";
 import styles from "./Shrink.module.css";
-import {Box, Grid, Flex} from "@radix-ui/themes";
+import {Box, Grid} from "@radix-ui/themes";
 import {SiteHeader} from "../../components/SiteHeader";
 
 export const Shrink: FC = () => {
@@ -96,7 +97,7 @@ export const Shrink: FC = () => {
     }
 
     if (spinning) {
-      return <Spin spinning={true} fullscreen />
+      return <Spinner size="3" style={{position: 'fixed', top: '50%', left: '50%', transform: 'translate(-50%, -50%)', zIndex: 9999}} />
     }
 
     return (
@@ -107,38 +108,40 @@ export const Shrink: FC = () => {
           </Box>
           <Box className={"contentStyle"} height={"95vh"}>
             {shrinkSuccess && (
-              <Flex className={styles.boxStyle} justify={'center'} align={'center'} gap={"middle"}>
-                <Result status="success" title={shrinkResult} className={styles.resultStyle} extra={
-                  <>
-                    <Button type="primary" key="copy" onClick={copyIt}>Copy</Button>
-                    <Button type="primary" key="close" onClick={closeButton}>Close</Button>
-                  </>
-                }/>
+              <Flex className={styles.boxStyle} justify={'center'} align={'center'} gap={"3"}>
+                <Box style={{textAlign: 'center', padding: '2rem'}}>
+                  <h2 style={{color: 'green', marginBottom: '1rem'}}>Success!</h2>
+                  <p style={{fontSize: '1.2rem', marginBottom: '1.5rem'}}>{shrinkResult}</p>
+                  <Button onClick={copyIt} style={{marginRight: '1rem'}}>Copy</Button>
+                  <Button onClick={closeButton}>Close</Button>
+                </Box>
               </Flex>
             )}
             {shrinkError && (
-              <Flex className={styles.boxStyle} justify={'center'} align={'center'} gap={"middle"}>
-                <Result status="error" title={shrinkErrorReason} className={styles.resultStyle} extra={
-                  <>
+              <Flex className={styles.boxStyle} justify={'center'} align={'center'} gap={"3"}>
+                <Box style={{textAlign: 'center', padding: '2rem'}}>
+                  <h2 style={{color: 'red', marginBottom: '1rem'}}>Error</h2>
+                  <p style={{fontSize: '1.2rem', marginBottom: '1.5rem'}}>{shrinkErrorReason}</p>
                   {invalidURL ? (
-                    <Button type="primary" key="close" onClick={closeButton}>
-                      Close
-                    </Button>
+                    <Button onClick={closeButton}>Close</Button>
                   ) : (
-                    <Button type="primary" key="console" onClick={shrinkIt}>
-                      Try Again
-                    </Button>
+                    <Button onClick={shrinkIt}>Try Again</Button>
                   )}
-                  </>
-                }/>
+                </Box>
               </Flex>
             )}
             {showInput && (
-              <Flex className={styles.boxStyle} justify={'center'} align={'center'} gap={"middle"}>
-                <Space.Compact size={"large"} style-={{width: '100%'}}>
-                  <Input id={"shrinkInput"} className={styles.shrinkInput} placeholder={"https://chewedfeed.com"} onPressEnter={shrinkIt} />
-                  <Button id={"shrinkButton"} className={styles.shrinkButton} type={"primary"} onClick={shrinkIt}>Shrink</Button>
-                </Space.Compact>
+              <Flex className={styles.boxStyle} justify={'center'} align={'center'} gap={"3"}>
+                <Box style={{display: 'flex', width: '100%', maxWidth: '500px'}}>
+                  <input 
+                    id={"shrinkInput"} 
+                    className={styles.shrinkInput} 
+                    placeholder={"https://chewedfeed.com"} 
+                    onKeyDown={(e) => e.key === 'Enter' && shrinkIt()}
+                    style={{flex: 1, padding: '0.5rem', borderRadius: '4px', border: '1px solid #ccc'}}
+                  />
+                  <Button id={"shrinkButton"} className={styles.shrinkButton} onClick={shrinkIt} style={{marginLeft: '0.5rem'}}>Shrink</Button>
+                </Box>
               </Flex>
             )}
           </Box>
