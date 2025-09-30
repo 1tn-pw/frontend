@@ -42,7 +42,7 @@
     ]
   },
   "devDependencies": {
-    "@jest/types": "^30.0.5",
+    "@jest/types": "^30.2.0",
     "@react-buddy/ide-toolbox": "^2.4.0",
     "@react-buddy/palette-antd": "^5.3.1",
     "@testing-library/jest-dom": "^6.8.0",
