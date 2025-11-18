@@ -24,8 +24,8 @@ importers:
         specifier: ^5.29.0
         version: 5.29.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       oidc-client-ts:
-        specifier: ^3.4.0
-        version: 3.4.0
+        specifier: ^3.4.1
+        version: 3.4.1
       react:
         specifier: ^18.3.1
         version: 18.3.1
@@ -34,7 +34,7 @@ importers:
         version: 18.3.1(react@18.3.1)
       react-oidc-context:
         specifier: ^3.3.0
-        version: 3.3.0(oidc-client-ts@3.4.0)(react@18.3.1)
+        version: 3.3.0(oidc-client-ts@3.4.1)(react@18.3.1)
       react-router-dom:
         specifier: ^7.9.6
         version: 7.9.6(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
@@ -5675,8 +5675,8 @@ packages:
   obuf@1.1.2:
     resolution: {integrity: sha512-PX1wu0AmAdPqOL1mWhqmlOd8kOIZQwGZw6rh7uby9fTc5lhaOWFLX3I6R1hrF9k3zUY40e6igsLGkDXK92LJNg==}
 
-  oidc-client-ts@3.4.0:
-    resolution: {integrity: sha512-Fe4EKXYxT1SkKfvEv4qOkVlPWYBjrV+4XXKLSvX9U4s5EHchawF1x2sguO+6u0tOa/Xw6lOvD/ClzCAxJUI25g==}
+  oidc-client-ts@3.4.1:
+    resolution: {integrity: sha512-jNdst/U28Iasukx/L5MP6b274Vr7ftQs6qAhPBCvz6Wt5rPCA+Q/tUmCzfCHHWweWw5szeMy2Gfrm1rITwUKrw==}
     engines: {node: '>=18'}
 
   on-finished@2.4.1:
@@ -14984,7 +14984,7 @@ snapshots:
 
   obuf@1.1.2: {}
 
-  oidc-client-ts@3.4.0:
+  oidc-client-ts@3.4.1:
     dependencies:
       jwt-decode: 4.0.0
 
@@ -16088,9 +16088,9 @@ snapshots:
 
   react-is@18.3.1: {}
 
-  react-oidc-context@3.3.0(oidc-client-ts@3.4.0)(react@18.3.1):
+  react-oidc-context@3.3.0(oidc-client-ts@3.4.1)(react@18.3.1):
     dependencies:
-      oidc-client-ts: 3.4.0
+      oidc-client-ts: 3.4.1
       react: 18.3.1
 
   react-refresh@0.11.0: {}
