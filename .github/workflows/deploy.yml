@@ -10,7 +10,7 @@ jobs:
     runs-on: ubuntu-latest
     environment: production
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
         with:
           fetch-depth: 1
       - name: Meta
@@ -70,4 +70,3 @@ jobs:
 #          k8sdeploy-id: ${{ secrets.K8SDEPLOY_ID }}
 #          image-hash: ${{ github.sha }}
 #          image-tag: ${{ github.ref_name }}
-

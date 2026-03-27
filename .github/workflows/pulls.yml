@@ -15,15 +15,14 @@ jobs:
     timeout-minutes: 5
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
         with:
           fetch-depth: 1
-      - uses: pnpm/action-setup@v3
+      - uses: oven-sh/setup-bun@v2
         with:
-          version: 9
-      - run: pnpm install --frozen-lockfile --dev
-      - run: pnpm install --frozen-lockfile
-      - run: pnpm run test --passWithNoTests
+          bun-version: latest
+      - run: bun install --frozen-lockfile
+      - run: bun run test --passWithNoTests
   automerge:
     runs-on: ubuntu-latest
     permissions:
