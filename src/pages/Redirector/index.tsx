@@ -1,20 +1,9 @@
 import {FC, useState, useEffect, useCallback} from 'react';
 import {Spin} from "antd";
-
-interface RedirectProps {
-  shortURL: string;
-}
-
-interface shortDoc {
-  short?: string;
-  long?: string;
-  title?: string;
-  description?: string;
-  favicon?: string;
-}
+import {RedirectProps, resolveFaviconHref, ShortDocument} from '../../models/shortLink';
 
 export const Redirect: FC<RedirectProps> = ({ shortURL }) => {
-  const [data, setData] = useState<shortDoc>({});
+  const [data, setData] = useState<ShortDocument>({});
 
   const getLongURL = useCallback((shortURL: string) => {
     let apiURL = "https://api.1tn.pw";
@@ -22,7 +11,7 @@ export const Redirect: FC<RedirectProps> = ({ shortURL }) => {
     fetch(`${apiURL}/${shortURL}`, {
         method: "GET",
     }).then(async (res) => {
-      const data: shortDoc = await res.json();
+      const data: ShortDocument = await res.json();
       setData(data);
     }).catch((err) => {
       console.error("redirect error", err);
@@ -46,12 +35,9 @@ export const Redirect: FC<RedirectProps> = ({ shortURL }) => {
     const linkTags = document.getElementsByName("link") as NodeListOf<HTMLLinkElement>
     linkTags.forEach((linkTag: HTMLLinkElement) => {
       if (linkTag.getAttribute("rel") === "icon") {
-        if (data.favicon && data.favicon !== "") {
-          if (data.favicon.startsWith("http")) {
-            linkTag.setAttribute("href", data.favicon);
-          } else {
-            linkTag.setAttribute("href", data.long + data.favicon);
-          }
+        const faviconHref = resolveFaviconHref(data);
+        if (faviconHref) {
+          linkTag.setAttribute("href", faviconHref);
         }
       }
     });

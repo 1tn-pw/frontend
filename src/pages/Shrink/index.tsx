@@ -3,6 +3,7 @@ import {Button, Input, Result, Space, Spin} from 'antd';
 import styles from "./Shrink.module.css";
 import {Box, Grid, Flex} from "@radix-ui/themes";
 import {SiteHeader} from "../../components/SiteHeader";
+import {CreateShortLinkRequest, CreateShortLinkResponse} from '../../models/shortLink';
 
 export const Shrink: FC = () => {
     const [shrinkSuccess, setShrinkSuccess] = useState(false);
@@ -63,16 +64,18 @@ export const Shrink: FC = () => {
             url = "https://" + url;
         }
 
+        const payload: CreateShortLinkRequest = {
+          url,
+        }
+
         const res = await fetch(apiURL, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
             },
-            body: JSON.stringify({
-                url: url
-            })
+            body: JSON.stringify(payload)
         });
-        const data = await res.json();
+        const data: CreateShortLinkResponse = await res.json();
         if (res.ok) {
             setShrinkSuccess(true);
             setShrinkResult(`https://1tn.pw/${data.short}`);
