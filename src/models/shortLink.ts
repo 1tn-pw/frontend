@@ -23,13 +23,19 @@ export const resolveFaviconHref = ({favicon, long}: ShortDocument): string | und
     return undefined;
   }
 
-  if (favicon.startsWith('http')) {
-    return favicon;
+  try {
+    return new URL(favicon).toString();
+  } catch {
+    // Fall through and resolve relative favicon URLs against the long URL.
   }
 
   if (!long || long === '') {
     return undefined;
   }
 
-  return `${long}${favicon}`;
+  try {
+    return new URL(favicon, long).toString();
+  } catch {
+    return undefined;
+  }
 }
