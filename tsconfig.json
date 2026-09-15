@@ -1,6 +1,6 @@
 {
   "compilerOptions": {
-    "target": "es5",
+    "target": "ES2015",
     "rootDir": "src",
     "lib": [
       "dom",
@@ -15,10 +15,9 @@
     "forceConsistentCasingInFileNames": true,
     "noFallthroughCasesInSwitch": true,
     "module": "esnext",
-    "moduleResolution": "node",
+    "moduleResolution": "bundler",
     "resolveJsonModule": true,
     "isolatedModules": true,
-    "ignoreDeprecations": "6.0",
     "noEmit": true,
     "jsx": "react-jsx"
   },
