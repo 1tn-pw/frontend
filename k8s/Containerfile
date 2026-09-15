@@ -12,7 +12,6 @@ COPY public ./public
 COPY src ./src
 COPY public ./public
 COPY tsconfig.json ./
-COPY config-overrides.js ./
 
 # Install dependencies
 FROM base AS dependencies
@@ -26,4 +25,4 @@ RUN pnpm build
 # Runner
 FROM build AS runner
 RUN pnpm install -g serve
-CMD ["serve", "-s", "build", "-l", "80"]
+CMD ["serve", "-s", "dist", "-l", "80"]
